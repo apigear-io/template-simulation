@@ -1,0 +1,15 @@
+version: '3'
+
+tasks:
+  default:
+    cmds:
+      - task --list-all
+  ivi:clean:
+    cmds:
+      - rm -rf examples/ivituner/simulation
+  ivi:build:
+    cmds:
+      - apigear generate solution examples/ivituner/ivi.solution.yaml
+  ivi:run:
+    cmds:
+      - apigear simulate run examples/ivituner/simulation/ivi.tuner.script.js
