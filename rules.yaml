@@ -1,0 +1,15 @@
+languages: ["js", "ts"]
+features:
+  - name: simu
+    scopes:
+      - match: module
+        documents:
+          - source: "global.d.ts.tpl"
+            target: "gen/global.d.ts"
+          - source: "module.d.ts.tpl"
+            target: "gen/{{dot .Module.Name}}.d.ts"
+          - source: "module.js.tpl"
+            target: "gen/{{dot .Module.Name}}.js"
+          - source: "script.js.tpl"
+            target: "{{dot .Module.Name}}.script.js"
+            preserve: true

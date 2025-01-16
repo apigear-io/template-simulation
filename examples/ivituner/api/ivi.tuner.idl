@@ -1,0 +1,46 @@
+
+module ivi.tuner
+
+enum Waveband {
+    AM = 0,
+    FM = 1,
+}
+
+struct Station {
+    id: string
+    name: string
+    description: string
+    frequency: float
+    image: string
+    waveband: Waveband
+}
+
+interface Tuner {
+    currentStation: Station
+    stations: Station[]
+    autoScanEnabled: bool
+    waveband: Waveband
+    scanStations()
+    autoScan()
+    nextStation()
+    previousStation()
+}    
+
+interface Favorites {    
+    stations: Station[]
+    setStation(index: int, station: Station)
+    resetStation(index: int)
+    clearAll()
+}
+
+
+struct GridSize {
+    rows: int
+    columns: int
+}
+
+interface Preferences {
+    autoScanInterval: int
+    favoritesSize: GridSize
+    signal applied()
+}

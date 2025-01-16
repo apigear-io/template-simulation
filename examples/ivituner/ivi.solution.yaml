@@ -1,0 +1,7 @@
+schema: apigear.solution/1.0
+targets:
+  - name: ivi
+    output: ./simulation
+    inputs:
+      - ./api/ivi.tuner.idl
+    template: ../..
