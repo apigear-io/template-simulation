@@ -5,18 +5,24 @@ tasks:
     cmds:
       - task --list-all
   serve:
-    description: "Run ApiGear CLI in serve mode"
     cmds:
       - apigear serve
   ivi:clean:
-    description: "Clean simulation code"
     cmds:
       - rm -rf examples/ivituner/simulation
   ivi:build:
-    description: "Build simulation code"
     cmds:
       - apigear generate solution examples/ivituner/ivi.solution.yaml
   ivi:run:
-    description: "Run simulation code"
     cmds:
-      - apigear simulate run examples/ivituner/simulation/ivi.tuner.script.js
+      - apigear sim run examples/ivituner/simulation/ivi.tuner.script.sim.js --serve
+
+  demo:clean:
+    cmds:
+      - rm -rf examples/demo/simulation
+  demo:build:
+    cmds:
+      - apigear generate solution examples/demo/demo.solution.yaml
+  demo:run:
+    cmds:
+      - apigear sim run examples/demo/simulation/counter.script.sim.js --serve

@@ -1,0 +1,8 @@
+module demo
+
+interface Counter {
+  count: int
+  increment()
+  clear()
+  signal cleared()
+};

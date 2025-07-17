@@ -21,7 +21,7 @@ class {{.Name}} {
 {{- range .Module.Interfaces }}
 {{ $class := camel .Name}}
 
-const {{ $class }} = $createActor("{{dot $.Module.Name}}.{{Camel .Name}}", {
+const {{ $class }} = $createServiceProxy("{{dot $.Module.Name}}.{{Camel .Name}}", {
 {{- range .Properties}}
   {{.Name}}: {{jsDefault "" .}},
 {{- end}}
@@ -42,7 +42,7 @@ const {{ $class }} = $createActor("{{dot $.Module.Name}}.{{Camel .Name}}", {
 {{- range .Signals }}
 {{ $class }}.emit{{Camel .Name}} = function({{jsParams "" .Params}}) {
   console.log("emit {{camel .Name}}(...)")
-  this.$emitSignal("{{camel .Name}}", {{jsParams "" .Params}})
+  this.$.emitSignal("{{camel .Name}}", {{jsParams "" .Params}})
 }
 {{- end }}
 {{- end }}

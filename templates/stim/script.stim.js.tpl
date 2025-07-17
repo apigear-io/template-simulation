@@ -10,7 +10,7 @@ const {
 {{- range .Module.Interfaces}}
   {{camel .Name}},
 {{- end}}
-} = require("./gen/{{dot .Module.Name}}.js")  
+} = require("api/{{dot .Module.Name}}.js")  
 
 
 {{- range .Module.Interfaces}}
