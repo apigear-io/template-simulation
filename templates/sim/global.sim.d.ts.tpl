@@ -2,20 +2,23 @@
 
 
 export interface IService {
-    setProperty(key: string, value: any): void;
-    getProperty(key: string): any;
-    emitPropertyChanged(property: string, value: any): void;
-    onPropertyChanged(property: string, listener: (...args: any[]) => void): void;
-    setState(properties: Record<string, any>): void;
-    getState(): Record<string, any>;
-    setMethod(key: string, method: (...args: any[]) => any): void;
-    callMethod(key: string, ...args: any[]): any;
-    onMethodCalled(method: string, listener: (...args: any[]) => void): void;
-    emitSignal(signal: string, ...args: any[]): void;
-    onSignal(signal: string, listener: (...args: any[]) => void): void;
+    setProperty(key: string, value: unknown): void;
+    getProperty(key: string): unknown;
+    emitPropertyChanged(property: string, value: unknown): void;
+    onPropertyChanged(property: string, listener: (...args: unknown[]) => void): void;
+    setState(properties: Record<string, unknown>): void;
+    getState(): Record<string, unknown>;
+    setMethod(key: string, method: (...args: unknown[]) => unknown): void;
+    callMethod(key: string, ...args: unknown[]): unknown;
+    onMethodCalled(method: string, listener: (...args: unknown[]) => void): void;
+    emitSignal(signal: string, ...args: unknown[]): void;
+    onSignal(signal: string, listener: (...args: unknown[]) => void): void;
 }
 
 
-declare function $createService(objectId : string, state: Record<string, any>): IService;
-declare function $createServiceProxy(objectId : string, state: Record<string, any>): IService;
-declare function $getService(objectId : string): IService;
+declare global {
+    declare function $quit(): void
+    declare function $createService(objectId : string, state: Record<string, unknown>): IService;
+    declare function $createServiceProxy(objectId : string, state: Record<string, unknown>): IService;
+    declare function $getService(objectId : string): IService;
+}

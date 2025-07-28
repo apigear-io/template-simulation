@@ -3,7 +3,7 @@ features:
   - name: sim
     scopes:
       - match: module
-        prefix: "node_modules/api/"
+        prefix: "api/"
         documents:
           - source: "sim/global.sim.d.ts.tpl"
             target: "global.sim.d.ts"
@@ -13,8 +13,8 @@ features:
             target: "{{dot .Module.Name}}.sim.js"
   - name: stim
     scopes:
-      - match: module      
-        prefix: "node_modules/api/"
+      - match: module
+        prefix: "api/"
         documents:
           - source: "stim/global.stim.d.ts.tpl"
             target: "global.stim.d.ts"
@@ -24,14 +24,14 @@ features:
             target: "{{dot .Module.Name}}.stim.js"
   - name: sim_stub
     scopes:
-      - match: module      
+      - match: module
         documents:
           - source: "sim/script.sim.js.tpl"
             target: "{{dot .Module.Name}}.script.sim.js"
             preserve: true
   - name: stim_stub
     scopes:
-      - match: module      
+      - match: module
         documents:
           - source: "stim/script.stim.js.tpl"
             target: "{{dot .Module.Name}}.script.stim.js"
