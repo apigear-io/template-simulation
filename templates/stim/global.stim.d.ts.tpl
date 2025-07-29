@@ -16,6 +16,10 @@ export interface IClient {
     onSignal(signal: string, listener: (...args: any[]) => void): void;
 }
 
+export interface IChannel {
+    createClient(objectId: string): IClient
+}
 
-declare function $createClient(objectId: string, options: { state: Record<string, any>, url: string } ): IClient;
-declare function $createClientProxy(objectId: string, options: { state: Record<string, any>, url: string } ): IClient;
+declare global {
+    declare function $createChannel(url = "ws://localhost:5555/ws"): IChannel;
+}

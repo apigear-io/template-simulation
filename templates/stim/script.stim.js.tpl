@@ -13,11 +13,18 @@ const {
 } = require("api/{{dot .Module.Name}}.js")  
 
 
+const channel = $createChannel()
+
 {{- range .Module.Interfaces}}
 {{ $class := camel .Name}}
-{{- range .Operations}}
-{{ $class }}.{{camel .Name}} = function({{jsParams "" .Params}}) {
-  console.log("{{camel .Name}}(...)")
-}
-{{- end }}
+const {{ $class }} = channel.createClient("{{dot $.Module.Name}}.{{Camel .Name}}")
+// {{ $class }}.setProperty("count", 10)
+// {{ $class }}.onProperty("count", function(v) {
+  console.log("count is ", v)
+})
+// {{ $class }}.callMethod("increment")
+// {{ $class }}.callMethod("decrement", 2)
+// {{ $class }}.onSignal("minReached", function() {
+//  console.log("min reached")
+//})
 {{- end }}
