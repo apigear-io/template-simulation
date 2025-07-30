@@ -10,7 +10,7 @@ const {
 {{- range .Module.Interfaces}}
   {{camel .Name}},
 {{- end}}
-} = require("./gen/{{dot .Module.Name}}.js")  
+} = require("api/{{dot .Module.Name}}.sim.js")  
 
 
 {{- range .Module.Interfaces}}
@@ -21,3 +21,12 @@ const {
 }
 {{- end }}
 {{- end }}
+
+
+function main() {
+  console.log("main functions are auto called from the simulator")
+}
+
+function demo() {
+  console.log("other top level functions can be called from the simulator")
+}

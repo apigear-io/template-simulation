@@ -1,15 +1,38 @@
 languages: ["js", "ts"]
 features:
-  - name: simu
+  - name: sim
+    scopes:
+      - match: module
+        prefix: "api/"
+        documents:
+          - source: "sim/global.sim.d.ts.tpl"
+            target: "global.sim.d.ts"
+          - source: "sim/module.sim.d.ts.tpl"
+            target: "{{dot .Module.Name}}.sim.d.ts"
+          - source: "sim/module.sim.js.tpl"
+            target: "{{dot .Module.Name}}.sim.js"
+  - name: stim
+    scopes:
+      - match: module
+        prefix: "api/"
+        documents:
+          - source: "stim/global.stim.d.ts.tpl"
+            target: "global.stim.d.ts"
+          - source: "stim/module.stim.d.ts.tpl"
+            target: "{{dot .Module.Name}}.stim.d.ts"
+          - source: "stim/module.stim.js.tpl"
+            target: "{{dot .Module.Name}}.stim.js"
+  - name: sim_stub
     scopes:
       - match: module
         documents:
-          - source: "global.d.ts.tpl"
-            target: "gen/global.d.ts"
-          - source: "module.d.ts.tpl"
-            target: "gen/{{dot .Module.Name}}.d.ts"
-          - source: "module.js.tpl"
-            target: "gen/{{dot .Module.Name}}.js"
-          - source: "script.js.tpl"
-            target: "{{dot .Module.Name}}.script.js"
+          - source: "sim/script.sim.js.tpl"
+            target: "{{dot .Module.Name}}.script.sim.js"
+            preserve: true
+  - name: stim_stub
+    scopes:
+      - match: module
+        documents:
+          - source: "stim/script.stim.js.tpl"
+            target: "{{dot .Module.Name}}.script.stim.js"
             preserve: true
