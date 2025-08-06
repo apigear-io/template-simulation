@@ -7,7 +7,7 @@ const {
 {{- range .Module.Structs}}
   {{Camel .Name}},
 {{- end}}
-} = require("./api/{{dot .Module.Name}}")  
+} = require("./api/{{dot .Module.Name}}.js")  
 
 // Client module to call the server API
 
@@ -18,7 +18,7 @@ const channel = $createChannel("ws://localhost:5555/ws")
 {{- range .Module.Interfaces}}
 {{ $class := camel .Name}}
 // Create a client for the interface {{.Name}}
-const {{ $class }} = channel.createClient("{{dot $.Module.Name}}.{{Camel .Name}}")
+const {{ $class }} = channel.createClient("{{$.Module.Name}}.{{Camel .Name}}")
 
 function set{{ Camel $class }}Default() {
   console.log("Setting properties for {{camel .Name}}")

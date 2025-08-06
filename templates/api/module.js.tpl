@@ -22,7 +22,7 @@ class {{.Name}} {
 {{ $class := camel .Name}}
 
 const $create{{Camel .Name}} = function(properties = {}) {
-  return $createService("{{dot $.Module.Name}}.{{Camel .Name}}", properties)
+  return $createService("{{$.Module.Name}}.{{Camel .Name}}", properties)
 }
 {{- end }}
 
