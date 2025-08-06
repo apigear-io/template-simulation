@@ -24,33 +24,7 @@ class {{.Name}} {
 const $create{{Camel .Name}} = function(properties = {}) {
   return $createService("{{dot $.Module.Name}}.{{Camel .Name}}", properties)
 }
-
-const {{ $class }} = $createService("{{dot $.Module.Name}}.{{Camel .Name}}", {
-{{- range .Properties}}
-  {{.Name}}: {{jsDefault "" .}},
-{{- end}}
-})
-
-{{- range .Operations }}
-
-{{ $class }}.{{camel .Name}} = function({{jsParams "" .Params}}) {
-  console.log("{{camel .Name}}(...)")
-  {{- if .Return.IsNotVoid }}
-  return {{ camel .Return.Name }}
-  {{- else }}
-  {{- end }}
-}
 {{- end }}
-
-
-{{- range .Signals }}
-{{ $class }}.emit{{Camel .Name}} = function({{jsParams "" .Params}}) {
-  console.log("emit {{camel .Name}}(...)")
-  this.emit("{{camel .Name}}", {{jsParams "" .Params}})
-}
-{{- end }}
-{{- end }}
-
 
 module.exports = {
 {{- range .Module.Enums }}
@@ -60,7 +34,6 @@ module.exports = {
   {{.Name}},
 {{- end }}
 {{- range .Module.Interfaces }}
-  {{camel .Name}},
   $create{{Camel .Name}},
 {{- end }}
 }

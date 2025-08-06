@@ -12,6 +12,9 @@ const {
 {{- end}}
 } = require("./api/{{dot .Module.Name}}.js")  
 
+
+// Service module to serve the API, called by clients
+
 {{- range .Module.Interfaces }}
 {{ $class := camel .Name}}
 

@@ -7,12 +7,13 @@ const {
 {{- range .Module.Structs}}
   {{Camel .Name}},
 {{- end}}
-{{- range .Module.Interfaces}}
-  {{camel .Name}},
-{{- end}}
 } = require("./api/{{dot .Module.Name}}")  
 
-const channel = $createChannel()
+// Client module to call the server API
+
+// a new connection channel to the server
+const channel = $createChannel("ws://localhost:5555/ws")
+
 
 {{- range .Module.Interfaces}}
 {{ $class := camel .Name}}
