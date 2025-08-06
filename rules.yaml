@@ -12,13 +12,13 @@ features:
             target: "api/{{dot .Module.Name}}.d.ts"
           - source: "api/module.js.tpl"
             target: "api/{{dot .Module.Name}}.js"
-  - name: stub    
+  - name: stub
     scopes:
       - match: module
         documents:
-          - source: "simulation.js.tpl"
-            target: "{{dot .Module.Name}}.sim.js"
+          - source: "service.js.tpl"
+            target: "{{dot .Module.Name}}.service.js"
             preserve: true
-          - source: "stimulation.js.tpl"
-            target: "{{dot .Module.Name}}.stim.js"
+          - source: "client.js.tpl"
+            target: "{{dot .Module.Name}}.client.js"
             preserve: true
