@@ -34,3 +34,7 @@ The generated output will include a JavaScript file that contains the simulation
 - A client (*client.js) will be generated to interact with an module connected via Object Link Protocol. 
 - In the service (*.service.js) you will find the service implementation that can be used to simulate the API service. You would normally connect from a API client to this service.
 
+
+## License
+
+Licensed under the [MIT License](./LICENSE). See [LICENSE](./LICENSE) for details.
